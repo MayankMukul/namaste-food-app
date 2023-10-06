@@ -27,6 +27,12 @@
 
 .card>img {
     width: 90%;
-    height: 60%;
+    height: 50%;
     margin: 1rem;
+}
+
+.search {
+    border: 3px solid blueviolet;
+    margin: 2rem auto;
+    width: 50%;
 }
