@@ -1,36 +1,221 @@
 // import React from 'react';
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const restaurantlist = [
-    {
-      name : "khadai paneer",
-        id : 1,
-        img: "https://b.zmtcdn.com/data/pictures/5/19136275/c07152265062c9600e3bd6d7bf03fdc6_o2_featured_v2.jpg" ,
-        dishes : "north indian, panjabi" ,
-        stars : "3",
-    },{
-      name : "Sardar Ji Da Dhaba",
-        id : 2,
-        img: "https:\/\/b.zmtcdn.com\/data\/pictures\/chains\/8\/3400238\/862f92a8b62d9e1c4c118dfee6e21857_o2_featured_v2.jpg" ,
-        dishes : "north indian, panjabi" ,
-        stars : "3",
-    },{
-      name : "Burger King",
-        id : 3,
-        img: "https:\/\/b.zmtcdn.com\/data\/pictures\/chains\/3\/20339183\/8c49ba335683507ba6ddee2dc84966e8_o2_featured_v2.jpg" ,
-        dishes : "north indian, panjabi" ,
-        stars : "3",
-    },{
-      name : "Manoj Dhaba",
-        id : 4,
-        img: "https:\/\/b.zmtcdn.com\/data\/pictures\/chains\/8\/3400298\/24f8a6987c97379e5903624a81011cd6_o2_featured_v2.jpg" ,
-        dishes : "north indian, panjabi" ,
-        stars : "3",
+  {
+    "info": {
+      "id": "614573",
+      "name": "Subway",
+      "cloudinaryImageId": "1ace5fa65eff3e1223feb696c956b38b",
+      "locality": "Sector 11",
+      "areaName": "Rohini",
+      "costForTwo": "₹350 for two",
+      "cuisines": [
+        "Salads",
+        "Snacks",
+        "Desserts",
+        "Beverages"
+      ],
+      "avgRating": 3.9,
+      "feeDetails": {
+        "restaurantId": "614573",
+        "fees": [
+          {
+            "name": "BASE_DISTANCE",
+            "fee": 6300
+          },
+          {
+            "name": "BASE_TIME"
+          },
+          {
+            "name": "ANCILLARY_SURGE_FEE"
+          }
+        ],
+        "totalFee": 6300
+      },
+      "parentId": "2",
+      "avgRatingString": "3.9",
+      "totalRatingsString": "500+",
+      "promoted": true,
+      "adTrackingId": "cid=8774140~p=1~eid=0000018b-0b7d-b6c2-5209-00e000580101~srvts=1696704870082~45995",
+      "sla": {
+        "deliveryTime": 22,
+        "lastMileTravel": 4.8,
+        "serviceability": "SERVICEABLE",
+        "slaString": "22 mins",
+        "lastMileTravelString": "4.8 km",
+        "iconType": "ICON_TYPE_EMPTY"
+      },
+      "availability": {
+        "nextCloseTime": "2023-10-08 01:00:00",
+        "opened": true
+      },
+      "badges": {
+        "textExtendedBadges": [
+          {
+            "iconId": "guiltfree/GF_Logo_android_3x",
+            "shortDescription": "options available",
+            "fontColor": "#7E808C"
+          }
+        ]
+      },
+      "isOpen": true,
+      "type": "F",
+      "badgesV2": {
+        "entityBadges": {
+          "imageBased": {
+            
+          },
+          "textExtendedBadges": {
+            "badgeObject": [
+              {
+                "attributes": {
+                  "iconId": "guiltfree/GF_Logo_android_3x",
+                  "description": "",
+                  "shortDescription": "options available",
+                  "fontColor": "#7E808C"
+                }
+              }
+            ]
+          },
+          "textBased": {
+            
+          }
+        }
+      },
+      "aggregatedDiscountInfoV3": {
+        "header": "40% OFF",
+        "subHeader": "UPTO ₹80"
+      },
+      "differentiatedUi": {
+        "displayType": "ADS_UI_DISPLAY_TYPE_ENUM_DEFAULT",
+        "differentiatedUiMediaDetails": {
+          "mediaType": "ADS_MEDIA_ENUM_IMAGE",
+          "lottie": {
+            
+          },
+          "video": {
+            
+          }
+        }
+      },
+      "reviewsSummary": {
+        
+      },
+      "displayType": "RESTAURANT_DISPLAY_TYPE_DEFAULT",
+      "restaurantOfferPresentationInfo": {
+        
+      }
+    },
+    "analytics": {
+      
+    },
+    "cta": {
+      "link": "swiggy://menu?restaurant_id=614573",
+      "text": "RESTAURANT_MENU",
+      "type": "DEEPLINK"
     }
-]
+  },
+  {
+    "info": {
+      "id": "498382",
+      "name": "Burger King",
+      "cloudinaryImageId": "e33e1d3ba7d6b2bb0d45e1001b731fcf",
+      "locality": "M2K Mall",
+      "areaName": "Rohini",
+      "costForTwo": "₹350 for two",
+      "cuisines": [
+        "Burgers",
+        "American"
+      ],
+      "avgRating": 4.4,
+      "feeDetails": {
+        "restaurantId": "498382",
+        "fees": [
+          {
+            "name": "BASE_TIME"
+          },
+          {
+            "name": "BASE_DISTANCE",
+            "fee": 4000
+          },
+          {
+            "name": "ANCILLARY_SURGE_FEE"
+          }
+        ],
+        "totalFee": 4000
+      },
+      "parentId": "166",
+      "avgRatingString": "4.4",
+      "totalRatingsString": "1K+",
+      "sla": {
+        "deliveryTime": 20,
+        "lastMileTravel": 2,
+        "serviceability": "SERVICEABLE",
+        "slaString": "20 mins",
+        "lastMileTravelString": "2.0 km",
+        "iconType": "ICON_TYPE_EMPTY"
+      },
+      "availability": {
+        "nextCloseTime": "2023-10-08 03:00:00",
+        "opened": true
+      },
+      "badges": {
+        
+      },
+      "isOpen": true,
+      "type": "F",
+      "badgesV2": {
+        "entityBadges": {
+          "textBased": {
+            
+          },
+          "imageBased": {
+            
+          },
+          "textExtendedBadges": {
+            
+          }
+        }
+      },
+      "aggregatedDiscountInfoV3": {
+        "header": "EVERY ITEM",
+        "subHeader": "@ ₹129"
+      },
+      "differentiatedUi": {
+        "displayType": "ADS_UI_DISPLAY_TYPE_ENUM_DEFAULT",
+        "differentiatedUiMediaDetails": {
+          "mediaType": "ADS_MEDIA_ENUM_IMAGE",
+          "lottie": {
+            
+          },
+          "video": {
+            
+          }
+        }
+      },
+      "reviewsSummary": {
+        
+      },
+      "displayType": "RESTAURANT_DISPLAY_TYPE_DEFAULT",
+      "restaurantOfferPresentationInfo": {
+        
+      }
+    },
+    "analytics": {
+      
+    },
+    "cta": {
+      "link": "swiggy://menu?restaurant_id=498382",
+      "text": "RESTAURANT_MENU",
+      "type": "DEEPLINK"
+    }
+  }]
 
 function Restaurantcard (props) {
+
+  const imgurl = "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/";
     return (
         <div className="card">
             {/* <img src="https://b.zmtcdn.com/data/pictures/5/19136275/c07152265062c9600e3bd6d7bf03fdc6_o2_featured_v2.jpg" alt="Image" />
@@ -43,10 +228,12 @@ function Restaurantcard (props) {
             <h3>{restaurantlist[0].dishes}</h3>
             <h4>{restaurantlist[0].stars}</h4> */}
             
-            <img src={props.img} alt="not rendered" />
-            <h3>{props.name}</h3>
-            <h3>{props.dishes}</h3>
-            <h4>{props.stars}</h4>
+            <img src={imgurl + props.info.cloudinaryImageId} alt="not rendered" />
+            <h3>{props.info.name}</h3>
+            <h3>{props.info.cuisines.join(", ")}</h3>
+            <h4>{props.info.avgRating}</h4>
+
+            {/* {console.log(props)} */}
 
         </div>
     )
@@ -54,21 +241,36 @@ function Restaurantcard (props) {
 
 
 function filterRestaurant(a,restaurants){
-   console.log(a,restaurants);
+  //  console.log(a,restaurants);
         const data = restaurants.filter((restaurant)=>{
-          console.log(restaurant.name,restaurant.name.includes(a));
+          // console.log(restaurant.name,restaurant.name.includes(a));
           return restaurant.name.includes(a);
         });
-        console.log(data)
+        // console.log(data)
 
         return data;   
 }
 
+
+
 function Container() {
-    const [restaurant,setrestaurant] = useState(restaurantlist);
+    const [allrestaurant, setallrestaurant] = useState(restaurantlist)
+    const [restaurant,setrestaurant] = useState(allrestaurant);
     const [a,seta] = useState("");
 
-    
+    useEffect(()=>{
+      getRestaurants();
+    },[])
+
+    async function getRestaurants(){
+      const data = await fetch("https://www.swiggy.com/mapi/homepage/getCards?lat=28.7040592&lng=77.10249019999999");
+      const json = await data.json();
+      // console.log(json.data?.success?.cards[1]?.gridWidget?.gridElements?.infoWithStyle?.restaurants);
+      setallrestaurant(json.data?.success?.cards[1]?.gridWidget?.gridElements?.infoWithStyle?.restaurants);
+      // console.log(allrestaurant);
+    }
+
+    // console.log("container");
 
     return (
       <>
@@ -82,9 +284,9 @@ function Container() {
           ></input>
           <button
             onClick={() => {
-              console.log(a,restaurant)
+              // console.log(a,restaurant)
               const data = filterRestaurant(a,restaurantlist);
-              console.log(data);
+              // console.log(data);
               setrestaurant(data);
             }}
           >
@@ -95,8 +297,8 @@ function Container() {
         <div className="container">
           {/* <Restaurantcard restaurant = {restaurantlist}/> */}
 
-          {restaurant.map((res) => {
-            return <Restaurantcard {...res} key={res.id} />;
+          {allrestaurant.map((res) => {
+            return <Restaurantcard {...res} key={res.info.id} />;
           })}
         </div>
       </>
