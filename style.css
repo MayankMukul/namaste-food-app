@@ -36,3 +36,7 @@
     margin: 2rem auto;
     width: 50%;
 }
+
+.search>input{
+    width: 80%;
+}

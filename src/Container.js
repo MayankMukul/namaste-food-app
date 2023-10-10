@@ -240,12 +240,15 @@ function Restaurantcard (props) {
 }
 
 
-function filterRestaurant(a,restaurants){
+function filterRestaurant(a,allrestaurant){
   //  console.log(a,restaurants);
-        const data = restaurants.filter((restaurant)=>{
-          // console.log(restaurant.name,restaurant.name.includes(a));
-          return restaurant.name.includes(a);
-        });
+  
+  
+    const data = allrestaurant.filter((restaurant)=>{
+      // console.log(restaurant.name,restaurant.name.includes(a));
+      return restaurant?.info?.name?.toLowerCase().includes(a.toLowerCase());
+    });
+  
         // console.log(data)
 
         return data;   
@@ -258,6 +261,8 @@ function Container() {
     const [restaurant,setrestaurant] = useState(allrestaurant);
     const [a,seta] = useState("");
 
+    // console.log("render",allrestaurant);
+    // setrestaurant(allrestaurant);
     useEffect(()=>{
       getRestaurants();
     },[])
@@ -267,10 +272,11 @@ function Container() {
       const json = await data.json();
       // console.log(json.data?.success?.cards[1]?.gridWidget?.gridElements?.infoWithStyle?.restaurants);
       setallrestaurant(json.data?.success?.cards[1]?.gridWidget?.gridElements?.infoWithStyle?.restaurants);
-      // console.log(allrestaurant);
+      setrestaurant(allrestaurant);
+      // console.log("Use Effect");
     }
 
-    // console.log("container");
+    // console.log("container",allrestaurant);
 
     return (
       <>
@@ -285,8 +291,9 @@ function Container() {
           <button
             onClick={() => {
               // console.log(a,restaurant)
-              const data = filterRestaurant(a,restaurantlist);
+              const data = filterRestaurant(a,allrestaurant);
               // console.log(data);
+              // setallrestaurant(data);
               setrestaurant(data);
             }}
           >
@@ -297,7 +304,7 @@ function Container() {
         <div className="container">
           {/* <Restaurantcard restaurant = {restaurantlist}/> */}
 
-          {allrestaurant.map((res) => {
+          {restaurant.map((res) => {
             return <Restaurantcard {...res} key={res.info.id} />;
           })}
         </div>
