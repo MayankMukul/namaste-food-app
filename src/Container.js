@@ -259,7 +259,7 @@ function filterRestaurant(a,allrestaurant){
 
 function Container() {
     const [allrestaurant, setallrestaurant] = useState([])
-    const [restaurant,setrestaurant] = useState(allrestaurant);
+    const [restaurant,setrestaurant] = useState();
     const [a,seta] = useState("");
 
     // console.log("render",allrestaurant);
@@ -278,6 +278,11 @@ function Container() {
     }
 
     // console.log("container",allrestaurant);
+    
+    // not rendered component (early return)
+    // if(restaurant?.length === 0 ){
+    //   return <h1>NO Search Found!</h1>
+    // }
 
     return ( allrestaurant.length===0 )?<Shimmer></Shimmer>:
       <>
@@ -304,10 +309,14 @@ function Container() {
 
         <div className="container">
           {/* <Restaurantcard restaurant = {restaurantlist}/> */}
-
-          {restaurant.map((res) => {
+            {(restaurant.length==0)?<h1>No Search Result Found </h1>:(restaurant.map((res) => {
             return <Restaurantcard {...res} key={res.info.id} />;
-          })}
+          })) }
+          {  
+          (restaurant.map((res) => {
+            return <Restaurantcard {...res} key={res.info.id} />;
+          }))
+          }
         </div>
       </>
     
