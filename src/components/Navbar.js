@@ -1,6 +1,8 @@
 import { useState } from "react";
 import  logo  from "../src/assests/food.svg";
 
+import About from './About';
+
 
 function Navbar() {
     const [logged, setlogged] = useState("Login");

@@ -1,4 +1,3 @@
-// import React from 'react';
 
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
@@ -269,11 +268,15 @@ function Container() {
     },[])
 
     async function getRestaurants(){
-      const data = await fetch("https://www.swiggy.com/mapi/homepage/getCards?lat=28.7040592&lng=77.10249019999999");
-      const json = await data.json();
-      // console.log(json.data?.success?.cards[1]?.gridWidget?.gridElements?.infoWithStyle?.restaurants);
-      setallrestaurant(json.data?.success?.cards[1]?.gridWidget?.gridElements?.infoWithStyle?.restaurants);
-      setrestaurant(json.data?.success?.cards[1]?.gridWidget?.gridElements?.infoWithStyle?.restaurants);
+      try {
+        const data = await fetch("https://www.swiggy.com/mapi/homepage/getCards?lat=28.7040592&lng=77.10249019999999");
+        const json = await data.json();
+        // console.log(json.data?.success?.cards[1]?.gridWidget?.gridElements?.infoWithStyle?.restaurants);
+        setallrestaurant(json.data?.success?.cards[1]?.gridWidget?.gridElements?.infoWithStyle?.restaurants);
+        setrestaurant(json.data?.success?.cards[1]?.gridWidget?.gridElements?.infoWithStyle?.restaurants); 
+      } catch (error) {
+        console.log("error occured",error);
+      }
       // console.log("Use Effect");
     }
 
