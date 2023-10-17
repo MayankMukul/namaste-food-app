@@ -4,15 +4,16 @@ import Navbar from './Navbar';
 import Container from './Container';
 import Footer from './Footer';
 import ErrorElement from './ErrorElement.js'
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { createBrowserRouter, RouterProvider,Outlet } from 'react-router-dom';
 import About from './About.js'
+import Contact from './Contact.js';
 
 
 const Applayout = ()=>{
   return (
     <>
     <Navbar></Navbar>
-    <Container></Container>
+    <Outlet></Outlet>
     <Footer></Footer>
     </>
     );
@@ -23,11 +24,17 @@ const appRouter = createBrowserRouter([
         path:"/",
         element:<Applayout/>,
         errorElement:<ErrorElement/>,
+        children:[{
+            path:"/",
+            element:<Container/>
+        },{
+            path:"/about",
+            element:<About/>
+        },{
+            path:"/contact",
+            element:<Contact/>,
+        }]
     },
-    {
-        path:'/about',
-        element:<About/>
-    }
 ])
 
 const root = ReactDOM.createRoot(document.getElementById("root"));

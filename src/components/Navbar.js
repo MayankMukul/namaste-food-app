@@ -1,6 +1,7 @@
 import { useState } from "react";
-import  logo  from "../src/assests/food.svg";
-
+import  logo  from "../assests/food.svg";
+import { Link } from "react-router-dom";
+import Contact from './Contact.js'
 import About from './About';
 
 
@@ -29,8 +30,9 @@ function Navbar() {
             >
               {logged}
             </button>
-            <li>Home</li>
-            <li>About</li>
+            <li><Link to="/">Home</Link></li>
+            <li><Link to="/About">About</Link></li>
+            <li><Link to="/Contact">Contact</Link></li>
             <li>Cart</li>
           </ul>
         </div>
