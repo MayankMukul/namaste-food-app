@@ -1,6 +1,7 @@
 
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
+import { Link } from "react-router-dom";
 
 // const restaurantlist = [
 //   {
@@ -271,9 +272,10 @@ function Container() {
       try {
         const data = await fetch("https://www.swiggy.com/mapi/homepage/getCards?lat=28.7040592&lng=77.10249019999999");
         const json = await data.json();
-        // console.log(json.data?.success?.cards[1]?.gridWidget?.gridElements?.infoWithStyle?.restaurants);
+        console.log(json.data?.success?.cards[1]?.gridWidget?.gridElements?.infoWithStyle?.restaurants);
         setallrestaurant(json.data?.success?.cards[1]?.gridWidget?.gridElements?.infoWithStyle?.restaurants);
         setrestaurant(json.data?.success?.cards[1]?.gridWidget?.gridElements?.infoWithStyle?.restaurants); 
+        
       } catch (error) {
         console.log("error occured",error);
       }
@@ -313,11 +315,22 @@ function Container() {
         <div className="container">
           {/* <Restaurantcard restaurant = {restaurantlist}/> */}
             {(restaurant.length==0)?<h1>No Search Result Found </h1>:(restaurant.map((res) => {
-            return <Restaurantcard {...res} key={res.info.id} />;
+            return (
+              <Link to={"/restraunt/"+res.info.id}
+              key={res.info.id} >
+              <Restaurantcard {...res}  />
+              </Link>
+            )
           })) }
+
           {  
           (restaurant.map((res) => {
-            return <Restaurantcard {...res} key={res.info.id} />;
+            return (
+              <Link to={"/restaurant/"+res.info.id}
+              key={res.info.id} >
+              <Restaurantcard {...res}  />
+              </Link>
+            )
           }))
           }
         </div>
