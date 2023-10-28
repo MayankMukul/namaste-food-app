@@ -1,18 +1,21 @@
 
 
-import {useParams} from "react-router-dom"
+import {useParams} from "react-router-dom";
+
+
 
 const RestrauntMenu = ()=>{
 
-    const { resid } = useParams();
-    console.log({resid}) ;
+    const { resname } = useParams();
+    // console.log({resname}) ;
+    
 
     return(
         <>
-        <h1>This is restraunt menu</h1>
-        <h2>menu for restraunt </h2>
-        <h2>Restraunt id : { resid }</h2>
-        <h2>Restraunt id : restraurant menu</h2>
+        <h1>Welcome To {resname}</h1>
+        <h2>Order your Food from {resname}</h2>
+        {/* <h2>Restraunt id : { resid }</h2> */}
+        <h2>Restraunt Name : {resname}</h2>
         </>
     )
 }
