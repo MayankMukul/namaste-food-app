@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
+import useIsOnline from "../utils/useIsOnline";
 
 // const restaurantlist = [
 //   {
@@ -236,7 +237,6 @@ function Restaurantcard (props) {
             <h3>{props.info.cuisines.join(", ")}</h3>
             <h4>{props.info.avgRating}</h4>
             </Link>
-            {/* {console.log(props)} */}
 
         </div>
     )
@@ -264,8 +264,8 @@ function Container() {
     const [restaurant,setrestaurant] = useState();
     const [a,seta] = useState("");
 
-    // console.log("render",allrestaurant);
-    // setrestaurant(allrestaurant);
+    
+
     useEffect(()=>{
       getRestaurants();
     },[])
@@ -274,14 +274,17 @@ function Container() {
       try {
         const data = await fetch("https://www.swiggy.com/mapi/homepage/getCards?lat=28.7040592&lng=77.10249019999999");
         const json = await data.json();
-        // console.log(json.data?.success?.cards[1]?.gridWidget?.gridElements?.infoWithStyle?.restaurants);
         setallrestaurant(json.data?.success?.cards[1]?.gridWidget?.gridElements?.infoWithStyle?.restaurants);
         setrestaurant(json.data?.success?.cards[1]?.gridWidget?.gridElements?.infoWithStyle?.restaurants); 
         
       } catch (error) {
         console.log("error occured",error);
       }
-      // console.log("Use Effect");
+    }
+
+    const isOnline = useIsOnline();
+    if(!isOnline){
+      return <h1>Offline ! you are offline</h1>
     }
 
     // console.log("container",allrestaurant);
@@ -291,7 +294,8 @@ function Container() {
     //   return <h1>NO Search Found!</h1>
     // }
 
-    return ( allrestaurant.length===0 )?<Shimmer></Shimmer>:
+    return ( allrestaurant.length===0 )?
+    <Shimmer/>:
       <>
         <div className="search">
           <input
@@ -303,10 +307,7 @@ function Container() {
           ></input>
           <button
             onClick={() => {
-              // console.log(a,restaurant)
               const data = filterRestaurant(a,allrestaurant);
-              // console.log(data);
-              // setallrestaurant(data);
               setrestaurant(data);
             }}
           >
@@ -315,22 +316,16 @@ function Container() {
         </div>
 
         <div className="container">
-          {/* <Restaurantcard restaurant = {restaurantlist}/> */}
             {(restaurant.length==0)?<h1>No Search Result Found </h1>:(restaurant.map((res) => {
             return (
-              
               <Restaurantcard {...res} key={res.info.id} />
-              
             )
           })) }
 
           {  
           (restaurant.map((res) => {
             return (
-             
-               
-              <Restaurantcard {...res} key={res.info.id} />
-              
+              <Restaurantcard {...res} key={res.info.id} /> 
             )
           }))
           }
