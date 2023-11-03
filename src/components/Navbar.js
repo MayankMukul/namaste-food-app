@@ -30,9 +30,11 @@ function Navbar() {
             >
               {logged}
             </button>
-            <li><Link to="/">Home</Link></li>
+            <li><Link to="/home">Home</Link></li>
             <li><Link to="/About">About</Link></li>
             <li><Link to="/Contact">Contact</Link></li>
+            <li><Link to="/instamart">Instamart</Link></li>
+            <li><Link to="/Test">Test</Link></li>
             <li>Cart</li>
           </ul>
         </div>

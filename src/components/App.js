@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 import ReactDOM from 'react-dom/client';
 import Navbar from './Navbar';
 import Container from './Container';
@@ -10,7 +10,10 @@ import Contact from './Contact.js';
 import RestrauntMenu from './RestrauntMenu.js';
 import Test from './Testapi.js';
 import SignupForm from './Form';
-import Profile from './Profile.js'
+import Profile from './Profile.js';
+// import Instamart from './instamart.js';
+
+const Instamart = lazy(()=> import("./instamart"))
 
 
 const Applayout = ()=>{
@@ -50,6 +53,11 @@ const appRouter = createBrowserRouter([
         },{
             path:"/test",
             element:<Test/>,
+        },{
+            path:"/instamart",
+            element:<Suspense fallback={<h1>Loading Instamart.......</h1>}>
+                <Instamart/>,
+                </Suspense>
         }
     ]
     },
