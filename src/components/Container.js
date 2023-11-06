@@ -273,8 +273,9 @@ function Container() {
     return ( allrestaurant.length===0 )?
     <Shimmer/>:
       <>
-        <div className="search">
+        <div className="search bg-slate-300 m-5 p-2 text-center">
           <input
+            className="p-1 rounded w-1/2"
             type="text"
             value={a}
             onChange={(e) => {
@@ -282,6 +283,7 @@ function Container() {
             }}
           ></input>
           <button
+            className="bg-black text-white rounded-md p-1 mx-2"
             onClick={() => {
               const data = filterRestaurant(a,allrestaurant);
               setrestaurant(data);
@@ -291,7 +293,7 @@ function Container() {
           </button>
         </div>
 
-        <div className="container">
+        <div className="container flex flex-wrap m-auto">
             {(restaurant.length==0)?<h1>No Search Result Found </h1>:(restaurant.map((res) => {
             return (
               <Restaurantcard {...res} key={res.info.id} />
