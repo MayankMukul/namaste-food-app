@@ -16,7 +16,7 @@ function Navbar() {
         }
     }
     return (
-      <div className="flex bg-neutral-300 justify-between p-2">
+      <div className="flex bg-neutral-300 md:bg-slate-400 justify-between p-2">
         <div className="title ">
         <img src={logo} className="h-20" alt="logo" />
           <h1 className="text-lg font-bold text-center"> Food App</h1>

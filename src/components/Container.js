@@ -283,7 +283,7 @@ function Container() {
             }}
           ></input>
           <button
-            className="bg-black text-white rounded-md p-1 mx-2"
+            className="bg-black text-white rounded-md p-1 mx-2 hover:bg-slate-600"
             onClick={() => {
               const data = filterRestaurant(a,allrestaurant);
               setrestaurant(data);
