@@ -26,13 +26,14 @@ class Profile extends React.Component {
     render(props){
         
         return (
-            <>
-            <h1>this is a profile section .</h1>
-            <img src={this.state.userInfo.avatar_url} alt="profile pic"/>
-            <h2>User Name : {this.state.userInfo.login}</h2>
-            
-            </>
-        )
+          <>
+            <div className='bg-slate-100 m-5 p-2'>
+              <h1 className='bg-black text-white p-2 font-bold'>This is a Profile Section.</h1>
+              <img className='rounded-full m-auto shadow-2xl' src={this.state.userInfo.avatar_url} alt="profile pic" />
+              <h2 className='text-center font-bold m-3'>User Name : {this.state.userInfo.login}</h2>
+            </div>
+          </>
+        );
     }
 }
 
