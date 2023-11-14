@@ -1,10 +1,7 @@
 import {useState} from 'react';
 
 const Section = (props)=>{
-    const[ShoworHide, setShoworHide] = useState('Show');
-    // if(!props.VisibleSection===props.title){
-    //   setShoworHide('Hide');
-    // }
+
     return (
       <div className="bg-slate-100 m-2 p-3">
         <h1 className="bg-black text-white font-bold p-3">
@@ -15,18 +12,15 @@ const Section = (props)=>{
             onClick={() => {
               if (props.Visibility) {
                 props.setVisibility(false);
-                setShoworHide("Show");
                 props.setvisibleSection('');
-                console.log(props.Visibility);
               } else {
                 props.setVisibility(true);
-                setShoworHide("Hide");
                 props.setvisibleSection(props.title);
-                console.log(props.Visibility);
               }
             }}
           >
-            {ShoworHide}
+            {(props.Visibility===true)?"Hide":"Show"}
+            
           </button>
         </h1>
 
@@ -56,10 +50,10 @@ const Instamart = ()=>{
 
     return (
       <>
-        <Section title={"Title1"} Visibility={(VisibleSection === 'Title1')} VisibleSection={VisibleSection} setVisibility={setVisibility} setvisibleSection={setvisibleSection}/>
-        <Section title={"Title2"} Visibility={VisibleSection === 'Title2'} VisibleSection={VisibleSection} setVisibility={setVisibility} setvisibleSection={setvisibleSection}/>
-        <Section title={"Title3"} Visibility={VisibleSection === 'Title3'} VisibleSection={VisibleSection} setVisibility={setVisibility} setvisibleSection={setvisibleSection}/>
-        <Section title={"Title4"} Visibility={VisibleSection === 'Title4'} VisibleSection={VisibleSection} setVisibility={setVisibility} setvisibleSection={setvisibleSection}/>
+        <Section title={"Title1"} Visibility={VisibleSection === 'Title1'} setVisibility={setVisibility} setvisibleSection={setvisibleSection}/>
+        <Section title={"Title2"} Visibility={VisibleSection === 'Title2'} setVisibility={setVisibility} setvisibleSection={setvisibleSection}/>
+        <Section title={"Title3"} Visibility={VisibleSection === 'Title3'} setVisibility={setVisibility} setvisibleSection={setvisibleSection}/>
+        <Section title={"Title4"} Visibility={VisibleSection === 'Title4'} setVisibility={setVisibility} setvisibleSection={setvisibleSection}/>
       </>
     );
 }
