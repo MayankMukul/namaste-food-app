@@ -1,13 +1,14 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import  logo  from "../assests/food.svg";
 import { Link } from "react-router-dom";
-import Contact from './Contact.js'
-import About from './About';
+import UserContext from '../utils/UserContext.js';
+// import Contact from './Contact.js'
+// import About from './About';
 
 
 function Navbar() {
     const [logged, setlogged] = useState("Login");
-
+    const {user} = useContext(UserContext);
     const logging = ()=>{
         if(logged === "Login"){
             setlogged("Logout");
@@ -24,6 +25,7 @@ function Navbar() {
         
         <div className="">
           <ul className="flex">
+            {user.name}
             <button 
               className=" bg-black text-white rounded-md p-2"
               onClick={() => {
