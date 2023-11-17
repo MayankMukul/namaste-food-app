@@ -1,4 +1,4 @@
-import React, { lazy, Suspense } from 'react';
+import React, { lazy, Suspense, useState } from 'react';
 import ReactDOM from 'react-dom/client';
 import Navbar from './Navbar';
 import Container from './Container';
@@ -11,19 +11,27 @@ import RestrauntMenu from './RestrauntMenu.js';
 import Test from './Testapi.js';
 import SignupForm from './Form';
 import Profile from './Profile.js';
+import UserContext from '../utils/UserContext.js';
 // import Instamart from './instamart.js';
 
 const Instamart = lazy(()=> import("./instamart"))
 
 
 const Applayout = ()=>{
+
+    const [user, setuser] = useState({
+        name: "Mayank",
+        email:"mayank@gmail.com"
+    })
   return (
     <>
-    <Navbar></Navbar>
-    <Outlet></Outlet>
-    <Footer></Footer>
+      <UserContext.Provider value={{user : user}}>
+        <Navbar></Navbar>
+        <Outlet></Outlet>
+        <Footer></Footer>
+      </UserContext.Provider>
     </>
-    );
+  );
 };
 
 const appRouter = createBrowserRouter([
