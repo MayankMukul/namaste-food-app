@@ -1,4 +1,7 @@
 import React from 'react';
+import UserContext from '../utils/UserContext';
+
+
 class Profile extends React.Component {
     constructor(props){
         super(props);
@@ -31,6 +34,13 @@ class Profile extends React.Component {
               <h1 className='bg-black text-white p-2 font-bold'>This is a Profile Section.</h1>
               <img className='rounded-full m-auto shadow-2xl' src={this.state.userInfo.avatar_url} alt="profile pic" />
               <h2 className='text-center font-bold m-3'>User Name : {this.state.userInfo.login}</h2>
+              
+              <h1 className='bg-black text-white p-2 font-bold'>Using User Context in class-based Component</h1>
+              <UserContext.Consumer>
+                {({user})=>{
+                    return <h1 className='font-bold p-2 m-1'>{user.name}<br/>{user.email}</h1>
+                }}
+              </UserContext.Consumer>
             </div>
           </>
         );
