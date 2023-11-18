@@ -1,58 +1,8 @@
-
-// // Render Prop
-// import React from 'react';
-// import { Formik, Form, Field, ErrorMessage } from 'formik';
-// import { Link } from 'react-router-dom';
-
-// const Basic = () => (
-//   <div>
-//     <h1>Any place in your app!</h1>
-//     <Formik
-//       initialValues={{ email: '', password: '' }}
-//       validate={values => {
-//         const errors = {};
-//         if (!values.email) {
-//           errors.email = 'Required';
-//         } else if (
-//           !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
-//         ) {
-//           errors.email = 'Invalid email address';
-//         }
-//         return errors;
-//       }}
-//       onSubmit={(values, { setSubmitting }) => {
-//         setTimeout(() => {
-//           alert(JSON.stringify(values, null, 2));
-//           setSubmitting(false);
-//         }, 400);
-
-
-//       }}
-//     >
-//       {({ isSubmitting }) => (
-//         <Form>
-//           <label htmlFor="email">Email Address</label>
-//           <Field type="email" name="email" />
-//           <ErrorMessage name="email" component="div" />
-//           <label htmlFor="password">Password</label>
-//           <Field type="password" name="password" />
-//           <ErrorMessage name="password" component="div" />
-//            <Link to={'/home'}>
-//           <button type="submit" disabled={isSubmitting}>
-//             Submit
-//           </button>
-//            </Link>
-//         </Form>
-//       )}
-//     </Formik>
-//   </div>
-// );
-
-// export default Basic;
-
-import React from 'react';
+import React, {useContext} from 'react';
 import { useFormik } from 'formik';
-import {Link } from 'react-router-dom';
+import {Link, useNavigate } from 'react-router-dom';
+import UserContext from '../utils/UserContext'
+import { useContext } from 'react';
 
 const validate = values => {
   const errors = {};
@@ -63,11 +13,11 @@ const validate = values => {
     errors.firstName = 'Must be 15 characters or less';
   }
 
-  if (!values.lastName) {
-    errors.lastName = 'Required';
-  } else if (values.lastName.length > 20) {
-    errors.lastName = 'Must be 20 characters or less';
-  }
+  // if (!values.lastName) {
+  //   errors.lastName = 'Required';
+  // } else if (values.lastName.length > 20) {
+  //   errors.lastName = 'Must be 20 characters or less';
+  // }
 
   if (!values.email) {
     errors.email = 'Required';
@@ -79,20 +29,28 @@ const validate = values => {
 };
 
 const SignupForm = () => {
+  const navigate = useNavigate();
+  const {user, setuser} = useContext(UserContext);
   const formik = useFormik({
     initialValues: {
       firstName: '',
-      lastName: '',
+      // lastName: '',
       email: '',
     },
     validate,
     onSubmit: values => {
-      alert(JSON.stringify(values, null, 2));
+      // alert(JSON.stringify(values, null, 2));
+      navigate("/home");
+      // console.log(values.email, values.firstName);
+      setuser({
+        name : values.firstName,
+        email : values.email,
+      })
     },
   });
   return (
     <form onSubmit={formik.handleSubmit}>
-      <label htmlFor="firstName">First Name</label>
+      <label htmlFor="firstName">User Name</label>
       <input
         id="firstName"
         name="firstName"
@@ -105,7 +63,7 @@ const SignupForm = () => {
         <div>{formik.errors.firstName}</div>
       ) : null}
 
-      <label htmlFor="lastName">Last Name</label>
+      {/* <label htmlFor="lastName">Last Name</label>
       <input
         id="lastName"
         name="lastName"
@@ -116,7 +74,7 @@ const SignupForm = () => {
       />
       {formik.touched.lastName && formik.errors.lastName ? (
         <div>{formik.errors.lastName}</div>
-      ) : null}
+      ) : null} */}
 
       <label htmlFor="email">Email Address</label>
       <input
@@ -132,9 +90,7 @@ const SignupForm = () => {
       ) : null}
 
       <button type="submit">
-      <Link to={'/home'}>
         Submit
-      </Link>
       </button>
     </form>
   );

@@ -1,6 +1,6 @@
 import { useState, useContext } from "react";
 import  logo  from "../assests/food.svg";
-import { Link } from "react-router-dom";
+import { Link, useNavigate} from "react-router-dom";
 import UserContext from '../utils/UserContext.js';
 // import Contact from './Contact.js'
 // import About from './About';
@@ -8,12 +8,18 @@ import UserContext from '../utils/UserContext.js';
 
 function Navbar() {
     const [logged, setlogged] = useState("Login");
-    const {user} = useContext(UserContext);
+    const {user,setuser} = useContext(UserContext);
+    const navigate = useNavigate();
     const logging = ()=>{
         if(logged === "Login"){
             setlogged("Logout");
         }else {
             setlogged("Login");
+            navigate("/");
+            setuser({
+              name: '',
+              email: '',
+            })
         }
     }
     return (

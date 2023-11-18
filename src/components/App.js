@@ -25,7 +25,10 @@ const Applayout = ()=>{
     })
   return (
     <>
-      <UserContext.Provider value={{user : user}}>
+      <UserContext.Provider value={{
+        user : user,
+        setuser : setuser
+        }}>
         <Navbar></Navbar>
         <Outlet></Outlet>
         <Footer></Footer>
