@@ -12,6 +12,7 @@ import Test from './Testapi.js';
 import SignupForm from './Form';
 import Profile from './Profile.js';
 import UserContext from '../utils/UserContext.js';
+import store from "../utils/store.js";
 // import Instamart from './instamart.js';
 
 const Instamart = lazy(()=> import("./instamart"))
@@ -24,7 +25,7 @@ const Applayout = ()=>{
         email:"mayank@gmail.com"
     })
   return (
-    <>
+    <Provider store={store}>
       <UserContext.Provider value={{
         user : user,
         setuser : setuser
@@ -33,7 +34,7 @@ const Applayout = ()=>{
         <Outlet></Outlet>
         <Footer></Footer>
       </UserContext.Provider>
-    </>
+    </Provider>
   );
 };
 
