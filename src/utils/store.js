@@ -1,7 +1,7 @@
-import confifureStore from "@reduxjs/toolkit";
+import { configureStore } from "@reduxjs/toolkit";
 import cartSlice from "./cartSlice";
 
-const store = confifureStore({
+const store = configureStore({
     reducer : {
         cart : cartSlice,
     }
