@@ -17,7 +17,7 @@ function Restaurantcard (props) {
               
               <img className='h-32 m-auto' src={imgurl + props.info.cloudinaryImageId} alt="not rendered" />
   
-              <Link to={"/Restaurant/"+ props.info.name}>
+              <Link to={"/Restaurant/"+ props.info.id}>
               <h3 className='text-lg font-bold'>{props.info.name}</h3>
               <h3>{props.info.cuisines.join(", ")}</h3>
               <h4>{props.info.avgRating}</h4>

@@ -13,6 +13,7 @@ import SignupForm from './Form';
 import Profile from './Profile.js';
 import UserContext from '../utils/UserContext.js';
 import store from "../utils/store.js";
+import { Provider } from "react-redux";
 // import Instamart from './instamart.js';
 
 const Instamart = lazy(()=> import("./instamart"))
@@ -60,7 +61,7 @@ const appRouter = createBrowserRouter([
             path:"/contact",
             element:<Contact/>,
         },{
-            path:'/Restaurant/:resname',
+            path:'/Restaurant/:resid',
             element:<RestrauntMenu />,
         },{
             path:"/test",
