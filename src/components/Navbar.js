@@ -2,15 +2,18 @@ import { useState, useContext } from "react";
 import  logo  from "../assests/food.svg";
 import { Link, useNavigate} from "react-router-dom";
 import UserContext from '../utils/UserContext.js';
-// import Contact from './Contact.js'
-// import About from './About';
+import { useSelector } from "react-redux";
 
 
 function Navbar() {
     const [logged, setlogged] = useState("Login");
     const {user,setuser} = useContext(UserContext);
+    const cartItems = useSelector(store=>store.cart.items);
+    
+
     const navigate = useNavigate();
     const logging = ()=>{
+
         if(logged === "Login"){
             setlogged("Logout");
         }else {
@@ -30,8 +33,8 @@ function Navbar() {
         </div>
         
         <div className="">
-          <ul className="flex">
-            {user.name}
+          <ul className="md:flex ">
+            <p className="m-1 p-1">{user.name}</p>
             <button 
               className=" bg-black text-white rounded-md p-2"
               onClick={() => {
@@ -45,7 +48,7 @@ function Navbar() {
             <li className="p-2 font-semibold"><Link to="/Contact">Contact</Link></li>
             <li className="p-2 font-semibold"><Link to="/instamart">Instamart</Link></li>
             <li className="p-2 font-semibold"><Link to="/Test">Test</Link></li>
-            <li className="p-2 font-semibold">Cart</li>
+            <li className="p-2 font-semibold"><Link to="/Cart">Cart {(cartItems.length==0)?null:cartItems.length}</Link></li>
           </ul>
         </div>
       </div>

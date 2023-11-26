@@ -4,7 +4,7 @@ function Footer() {
     const { user } = useContext(UserContext);
 
     return ( 
-        <div className="footer h-28 bg-neutral-300 md:bg-slate-400 text-center font-semibold p-3"> 
+        <div className="footer h-28 bg-neutral-300 md:bg-slate-400 text-center font-semibold p-3 mt-auto"> 
             Footer<br/>
             Made by Mayank<br/>
             <span>{user.name}</span>
