@@ -14,5 +14,10 @@ test("logo should render on rendering header",()=>{
         </Provider>
       </StaticRouter>
     );
-    console.log(navbar);
+    
+    const logo = navbar.getByTestId("logo");
+    expect(logo.src).toBe("http://localhost/food.svg")
+    
+
+
 })
