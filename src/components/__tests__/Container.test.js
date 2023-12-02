@@ -86,7 +86,7 @@ test("Check Search Box",async ()=>{
   fireEvent.click(searchbtn);
 
   const resList = container.getByTestId("res-list");
-  expect(resList.children).toBe(2);
+  expect(resList.children.length).toBe(1);
 
 
 })
