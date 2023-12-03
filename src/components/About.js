@@ -1,5 +1,6 @@
+import React from 'react';
 import Profile from './Profile.js'
-import {Outlet} from 'react-router-dom';
+// import {Outlet} from 'react-router-dom';
 const About = ()=>{
     return (
       <>

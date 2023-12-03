@@ -1,3 +1,4 @@
+import React from "react";
 import {useContext} from 'react';
 import UserContext from '../utils/UserContext.js';
 function Footer() {
