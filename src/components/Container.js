@@ -1,5 +1,5 @@
 
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import useIsOnline from "../utils/useIsOnline";
@@ -65,12 +65,15 @@ function Container() {
             className="p-1 rounded w-1/2"
             type="text"
             value={a}
+            data-testid="search-box"  
             onChange={(e) => {
               seta(e.target.value);
-            }}
+            }
+          }
           ></input>
           <button
             className="bg-black text-white rounded-md p-1 mx-2 hover:bg-slate-600"
+            data-testid="search-btn"
             onClick={() => {
               const data = filterRestaurant(a, allrestaurant);
               setrestaurant(data);
@@ -80,7 +83,7 @@ function Container() {
           </button>
         </div>
 
-        <div className="container flex flex-wrap m-auto">
+        <div className="container flex flex-wrap m-auto" data-testid="res-list">
           {restaurant.length == 0 ? (
             <h1>No Search Result Found </h1> //early return
           ) : (

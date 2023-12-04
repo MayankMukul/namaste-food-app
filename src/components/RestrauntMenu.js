@@ -1,5 +1,5 @@
 
-
+import React from 'react';
 import { useState, useEffect } from "react";
 import {useParams, useLocation} from "react-router-dom";
 import { useDispatch} from "react-redux";
@@ -49,9 +49,10 @@ const RestrauntMenu = ()=>{
     function MenuItems(props){
         // console.log(props.res.card.info.ratings.aggregatedRating.rating);
         return (
-        <div className="p-2 mx-auto my-3 bg-slate-200 w-1/2">
+        <div className="p-2 mx-auto my-3 bg-slate-200 w-1/2" data-testid="menu-items">
         <span className="font-bold">{props.res.card.info.name}</span>
         <button className="float-right m-3 p-1 rounded bg-black text-white"
+        data-testid="add-btn"
         onClick={()=>{
             // dispatchaddItem(props.res.card.info.name);
             dispatchaddItem(props.res.card.info);

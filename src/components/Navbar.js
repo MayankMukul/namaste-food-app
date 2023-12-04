@@ -48,7 +48,7 @@ function Navbar() {
             <li className="p-2 font-semibold"><Link to="/Contact">Contact</Link></li>
             <li className="p-2 font-semibold"><Link to="/instamart">Instamart</Link></li>
             <li className="p-2 font-semibold"><Link to="/Test">Test</Link></li>
-            <li className="p-2 font-semibold"><Link to="/Cart">Cart {(cartItems.length==0)?null:cartItems.length}</Link></li>
+            <li className="p-2 font-semibold"><Link data-testid="cart-items" to="/Cart">Cart {(cartItems.length==0)?null:cartItems.length}</Link></li>
           </ul>
         </div>
       </div>
