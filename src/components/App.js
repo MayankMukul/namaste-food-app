@@ -23,8 +23,8 @@ const Instamart = lazy(()=> import("./instamart"))
 const Applayout = ()=>{
 
     const [user, setuser] = useState({
-        name: "Mayank",
-        email:"mayank@gmail.com"
+        name: "Guest",
+        email:""
     })
   return (
     <Provider store={store}>
@@ -51,10 +51,10 @@ const appRouter = createBrowserRouter([
         errorElement:<ErrorElement/>,
         children:[{
             path:"/",
-            element:<SignupForm/>,
-        },{
-            path:"/home",
             element:<Container/>
+        },{
+          path:"/Signup",
+          element:<SignupForm/>,
         },{
             path:"/about",
             element:<About/>,

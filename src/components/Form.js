@@ -1,7 +1,7 @@
 import React, {useContext} from 'react';
 import { useFormik } from 'formik';
 import {Link, useNavigate } from 'react-router-dom';
-import UserContext from '../utils/UserContext'
+import UserContext from '../utils/UserContext';
 
 
 const validate = values => {
@@ -38,7 +38,8 @@ const SignupForm = () => {
     },
     validate,
     onSubmit: values => {
-      navigate("/home");
+      
+      navigate("/");
       setuser({
         name : values.firstName,
         email : values.email,
