@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 import useIsOnline from "../utils/useIsOnline";
 import Restaurantcard from './Restaurantcard';
-import CONST_RESTAURANT_LIST from "../utils/CONST_RESTAURANT_LIST.JS";
+import CONST_RESTAURANT_LIST from "../utils/CONST_RESTAURANT_LIST.js";
 
 
 function filterRestaurant(a,allrestaurant){
