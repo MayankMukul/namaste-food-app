@@ -8,7 +8,7 @@ function Restaurantcard (props) {
      return (
           <div className="card bg-slate-300 p-4 m-4 w-56">
               
-              <Link to={"/Restaurant/"+ props.info.id} state={{name : props.info.name}}>
+              <Link to={"/Restaurant/"+ props.info.id} state={{name : props.info.name, cloudinaryImageId:props.info.cloudinaryImageId}}>
               <img className='h-32 m-auto' src={imgurl + props.info.cloudinaryImageId} alt="not rendered" />
   
               <h3 className='text-lg font-bold'>{props.info.name}</h3>

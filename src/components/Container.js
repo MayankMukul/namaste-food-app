@@ -1,22 +1,18 @@
 
 import React, { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
-import { Link } from "react-router-dom";
 import useIsOnline from "../utils/useIsOnline";
 import Restaurantcard from './Restaurantcard';
 import CONST_RESTAURANT_LIST from "../utils/CONST_RESTAURANT_LIST.JS";
 
 
 function filterRestaurant(a,allrestaurant){
-  //  console.log(a,restaurants);
-  
-  
+
     const data = allrestaurant.filter((restaurant)=>{
-      // console.log(restaurant.name,restaurant.name.includes(a));
+
       return restaurant?.info?.name?.toLowerCase().includes(a.toLowerCase());
+
     });
-  
-        // console.log(data)
 
         return data;   
 }
@@ -65,11 +61,11 @@ function Container() {
             className="p-1 rounded w-1/2"
             type="text"
             value={a}
-            data-testid="search-box"  
+            placeholder="Search here..."
+            data-testid="search-box"
             onChange={(e) => {
               seta(e.target.value);
-            }
-          }
+            }}
           ></input>
           <button
             className="bg-black text-white rounded-md p-1 mx-2 hover:bg-slate-600"

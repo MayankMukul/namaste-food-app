@@ -1,23 +1,20 @@
 import React, {useContext} from 'react';
 import { useFormik } from 'formik';
-import {Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import UserContext from '../utils/UserContext';
+import { useDispatch } from "react-redux";
+import { logging } from "../utils/logstatus";
 
 
 const validate = values => {
   const errors = {};
+  
 
   if (!values.firstName) {
     errors.firstName = 'Required';
   } else if (values.firstName.length > 15) {
     errors.firstName = 'Must be 15 characters or less';
   }
-
-  // if (!values.lastName) {
-  //   errors.lastName = 'Required';
-  // } else if (values.lastName.length > 20) {
-  //   errors.lastName = 'Must be 20 characters or less';
-  // }
 
   if (!values.email) {
     errors.email = 'Required';
@@ -31,6 +28,12 @@ const validate = values => {
 const SignupForm = () => {
   const navigate = useNavigate();
   const {user, setuser} = useContext(UserContext);
+  const dispatch = useDispatch();
+
+  function dispatchlogstatus(log){
+    dispatch(logging(log));
+  }
+
   const formik = useFormik({
     initialValues: {
       firstName: '',
@@ -38,16 +41,16 @@ const SignupForm = () => {
     },
     validate,
     onSubmit: values => {
-      
       navigate("/");
       setuser({
         name : values.firstName,
         email : values.email,
       })
+      dispatchlogstatus("Logout");
     },
   });
   return (
-    <div className='bg-gray-300 w-1/2 m-auto p-3 '>
+    <div className='bg-gray-300 w-1/3 m-auto p-3 '>
       <h1 className='text-center text-2xl font-bold bg-black text-white p-2'>Sign Up</h1>
       <form onSubmit={formik.handleSubmit} className='m-4 '>
         <label htmlFor="firstName" className=''>User Name </label>
@@ -78,7 +81,7 @@ const SignupForm = () => {
           <span className='text-red-500'>*{formik.errors.email}</span>
         ) : null}
         <br/>
-        <button type="submit" className='bg-black text-white p-1 rounded m-2'>Submit</button>
+        <button type="submit" className='bg-black text-white  p-2 rounded m-2'>Login</button>
       </form>
     </div>
   );

@@ -24,12 +24,12 @@ test("Testing cart",async ()=>{
         </StaticRouter>
     )
 
-    await act(()=>{
-         waitFor(()=>{
+     
+        await waitFor(()=>{
             expect(container.getAllByTestId("menu-items"));
         })
 
-    });
+    
 
     const addbtn = container.getAllByTestId("add-btn");
 

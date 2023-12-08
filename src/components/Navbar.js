@@ -1,54 +1,75 @@
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
 import  logo  from "../assests/food.svg";
 import { Link, useNavigate} from "react-router-dom";
 import UserContext from '../utils/UserContext.js';
-import { useSelector } from "react-redux";
-
+import { useSelector, useDispatch } from "react-redux";
+import useIsOnline from "../utils/useIsOnline.js";
+import { logging } from "../utils/logstatus.js";
+ 
 
 function Navbar() {
-    const [logged, setlogged] = useState("Login");
     const {user,setuser} = useContext(UserContext);
     const cartItems = useSelector(store=>store.cart.items);
+    const logStatus = useSelector(store=>store.loginStatus.items);
+    const isOnline = useIsOnline();
+    const dispatch = useDispatch();
     
 
     const navigate = useNavigate();
-    const logging = ()=>{
-
-        if(logged === "Login"){
-            setlogged("Logout");
-        }else {
-            setlogged("Login");
-            navigate("/");
-            setuser({
-              name: '',
-              email: '',
-            })
-        }
+    
+    const log = ()=>{
+      navigate("/Signup");
+      dispatch(logging("Login"));
     }
+
     return (
       <div className="flex bg-neutral-300 md:bg-slate-400 justify-between p-2">
         <div className="title ">
-        <img src={logo} data-testid="logo" className="h-20" alt="logo" />
+          <img src={logo} data-testid="logo" className="h-20" alt="logo" />
           <h1 className="text-lg font-bold text-center"> Food App</h1>
         </div>
-        
+
         <div className="">
           <ul className="md:flex ">
-            <p className="m-1 p-1">{user.name}</p>
-            <button 
-              className=" bg-black text-white rounded-md p-2"
+            <p className="m-1 p-1">
+              Welcome,
+              <span className="font-bold"> {user.name}</span>
+            </p>
+            <p className="my-1 p-1">{isOnline ? "🟢" : "🔴"}</p>
+            <p className="m-1 p-1">|</p>
+            <Link to="/">
+              <li className="p-2 font-semibold hover:bg-black hover:text-white hover:rounded">
+                Home
+              </li>
+            </Link>
+            <Link to="/About">
+              <li className="p-2 font-semibold hover:bg-black hover:text-white hover:rounded">
+                About
+              </li>
+            </Link>
+            <Link to="/Contact">
+              <li className="p-2 font-semibold hover:bg-black hover:text-white hover:rounded">
+                Contact
+              </li>
+            </Link>
+            <Link to="/instamart">
+              <li className="p-2 font-semibold hover:bg-black hover:text-white hover:rounded">
+                Instamart
+              </li>
+            </Link>
+            <Link data-testid="cart-items" to="/Cart">
+              <li className="p-2 font-semibold hover:bg-black hover:text-white hover:rounded">
+                Cart {cartItems.length == 0 ? null : cartItems.length}
+              </li>
+            </Link>
+            <button
+              className=" bg-black text-white rounded-md p-2 mx-1"
               onClick={() => {
-                logging();
+                log();
               }}
             >
-              {logged}
+              {logStatus}
             </button>
-            <li className="p-2 font-semibold"><Link to="/home">Home</Link></li>
-            <li className="p-2 font-semibold"><Link to="/About">About</Link></li>
-            <li className="p-2 font-semibold"><Link to="/Contact">Contact</Link></li>
-            <li className="p-2 font-semibold"><Link to="/instamart">Instamart</Link></li>
-            <li className="p-2 font-semibold"><Link to="/Test">Test</Link></li>
-            <li className="p-2 font-semibold"><Link data-testid="cart-items" to="/Cart">Cart {(cartItems.length==0)?null:cartItems.length}</Link></li>
           </ul>
         </div>
       </div>
