@@ -56,7 +56,7 @@ function Container() {
       <Shimmer />
     ) : (
       <>
-        <div className="search bg-slate-300 m-5 p-2 text-center">
+        <div className="w-11/12 bg-slate-300 mx-auto my-5 p-2 text-center">
           <input
             className="p-1 rounded w-1/2"
             type="text"
@@ -79,7 +79,7 @@ function Container() {
           </button>
         </div>
 
-        <div className="container flex flex-wrap m-auto" data-testid="res-list">
+        <div className="container flex flex-wrap justify-center m-auto" data-testid="res-list">
           {restaurant.length == 0 ? (
             <h1>No Search Result Found </h1> //early return
           ) : (
