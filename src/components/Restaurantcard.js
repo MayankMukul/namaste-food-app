@@ -6,7 +6,7 @@ function Restaurantcard (props) {
     const imgurl = "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/";
 
      return (
-          <div className="card bg-slate-300 p-4 m-4 w-56">
+          <div className="card bg-slate-300 p-4 m-4 w-56 rounded">
               
               <Link to={"/Restaurant/"+ props.info.id} state={{name : props.info.name, cloudinaryImageId:props.info.cloudinaryImageId}}>
               <img className='h-32 m-auto' src={imgurl + props.info.cloudinaryImageId} alt="not rendered" />
