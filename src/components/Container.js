@@ -32,7 +32,8 @@ function Container() {
 
     async function getRestaurants(){
       try {
-        const data = await fetch("https://www.swiggy.com/mapi/homepage/getCards?lat=28.7040592&lng=77.10249019999999");
+        // const data = await fetch("https://www.swiggy.com/mapi/homepage/getCards?lat=28.7040592&lng=77.10249019999999");
+        const data = await fetch("mapi/homepage/getCards?lat=28.7040592&lng=77.10249019999999");
         const json = await data.json();
         setallrestaurant(json.data?.success?.cards[1]?.gridWidget?.gridElements?.infoWithStyle?.restaurants);
         setrestaurant(json.data?.success?.cards[1]?.gridWidget?.gridElements?.infoWithStyle?.restaurants); 
@@ -79,7 +80,7 @@ function Container() {
           </button>
         </div>
 
-        <div className="container flex flex-wrap justify-center m-auto" data-testid="res-list">
+        <div className="container flex flex-wrap justify-center m-auto " data-testid="res-list">
           {restaurant.length == 0 ? (
             <h1>No Search Result Found </h1> //early return
           ) : (

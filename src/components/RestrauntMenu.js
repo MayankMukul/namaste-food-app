@@ -16,7 +16,8 @@ const RestrauntMenu = ()=>{
     const location = useLocation()
     const dispatch = useDispatch();
 
-    let resurl = "https://www.swiggy.com/mapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=28.7040592&lng=77.10249019999999&restaurantId="+resid+"&submitAction=ENTER"
+    // let resurl = "https://www.swiggy.com/mapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=28.7040592&lng=77.10249019999999&restaurantId="+resid+"&submitAction=ENTER"
+    let resurl = "mapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=28.7040592&lng=77.10249019999999&restaurantId="+resid+"&submitAction=ENTER"
     const imgurl = "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/";
 
     
@@ -36,7 +37,7 @@ const RestrauntMenu = ()=>{
         // console.log(json.data.cards[3].groupedCard.cardGroupMap.REGULAR.cards[2].card.card.itemCards);
 
         } catch (error) {
-            console.log(error);
+            // console.log(error);
             const json = CONSTANT_MENU;
             setresdata(json.data.cards[3].groupedCard.cardGroupMap.REGULAR.cards[2].card.card.itemCards);
             setresname(location.state.name);
@@ -53,7 +54,7 @@ const RestrauntMenu = ()=>{
     function MenuItems(props){
         return (
           <div
-            className="p-2 mx-auto my-3 bg-slate-200 w-1/2"
+            className="p-2 mx-auto my-3 bg-slate-200 md:w-1/2"
             data-testid="menu-items"
           >
             <span className="font-bold">{props.res.card.info.name}</span>
@@ -79,24 +80,29 @@ const RestrauntMenu = ()=>{
         );
     }
 
-    return(
-        <div className="bg-slate-300 m-5 p-4">
-        <h1 className="bg-black text-white p-2 font-bold w-2/3 m-auto">Order from {resname}</h1>
-            <div className='flex  w-2/3 m-auto mb-3 bg-slate-200'>
-        <div className='m-3'>
-            <img className='h-40' src={imgurl + imageId} alt='Restaurant image not available'/>
+    return (
+      <div className="bg-slate-300 m-5 p-4">
+        <div className="  w-2/3 max-md:w-full m-auto mb-3 pb-1 bg-slate-200">
+        <h1 className="bg-black text-white p-2 font-bold  m-auto">
+          Order from {resname}
+        </h1>
+          <div className="flex m-3 ">
+            <img
+              className="h-40 m-1"
+              src={imgurl + imageId}
+              alt="Restaurant image not available"
+            />
+          <h2 className="font-bold text-4xl m-3"> {resname}</h2>
+          </div>
         </div>
-        <h2 className='font-bold text-4xl m-3'> {resname}</h2>
-
-            </div>
-        <h2 className="font-bold text-center bg-black text-white p-1 w-1/2 m-auto">Menu List</h2>
-        {resdata.map((res)=>{
-            return (
-                <MenuItems key={res.card.info.id} res={res}/>
-            )
+        <h2 className="font-bold text-center bg-black text-white p-1 md:w-1/2  m-auto">
+          Menu List
+        </h2>
+        {resdata.map((res) => {
+          return <MenuItems key={res.card.info.id} res={res} />;
         })}
-        </div>
-    )
+      </div>
+    );
 }
 
 export default RestrauntMenu;
