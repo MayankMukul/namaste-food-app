@@ -5,13 +5,14 @@ const ErrorElement = ()=>{
     const error = useRouteError();
     // console.log(error);
     return (
-      <>
-        <h1>oops</h1>
-        <h2>Something Went Wrong!!!</h2>
-        <h3>{error.status +" : "+ error.statusText}</h3>
-        <h3>{error.data }</h3>
+      <div className='bg-gray-300 p-4 h-screen'>
+        <h1 className='text-4xl bg-black text-white p-3'>Error</h1>
+        <h1 className='text-xl'>OOPS!...</h1>
+        <h2 className='text-2xl'>Page Not Found</h2>
         
-      </>
+        
+        
+      </div>
     );
 }
 
